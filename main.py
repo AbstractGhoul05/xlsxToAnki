@@ -14,7 +14,7 @@ image_loader = SheetImageLoader(sheet)
 # models for anki deck
 img_txt_model = genanki.Model(
     1607392319,
-    'Simple Model',
+    'BasicImgAns',
     fields=[
         {'name': 'Question'},
         {'name': 'Answer'},
@@ -29,7 +29,7 @@ img_txt_model = genanki.Model(
     ])
 img_model = genanki.Model(
     2112975270,
-    'Simple Model',
+    'BasicImg',
     fields=[
         {'name': 'Question'},
         {'name': 'Structure'}
@@ -43,7 +43,7 @@ img_model = genanki.Model(
     ])
 txt_model = genanki.Model(
     1360356766,
-    'Simple Model',
+    'BasicAns',
     fields=[
         {'name': 'Question'},
         {'name': 'Answer'}
@@ -57,7 +57,7 @@ txt_model = genanki.Model(
     ])
 no_model = genanki.Model(
     1471681582,
-    'Simple Model',
+    'BasicHead',
     fields=[
         {'name': 'Question'}
     ],
