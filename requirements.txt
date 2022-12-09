@@ -1,0 +1,12 @@
+autopep8==2.0.0
+cached-property==1.5.2
+chevron==0.14.0
+et-xmlfile==1.1.0
+frozendict==2.3.4
+genanki==0.13.0
+openpyxl==3.0.10
+openpyxl-image-loader==1.0.5
+Pillow==9.3.0
+pycodestyle==2.10.0
+PyYAML==6.0
+tomli==2.0.1
