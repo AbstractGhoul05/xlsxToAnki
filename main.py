@@ -11,61 +11,28 @@ wb = load_workbook(xlsx_file)
 sheet = wb.active
 image_loader = SheetImageLoader(sheet)
 
+# TODO: find a way to add styling to model
+#  .card {
+#   font-family: arial;
+#   font-size: 20px;
+#   text-align: center;
+#   color: black;
+#   background-color: white;
+# }
+
 # models for anki deck
-img_txt_model = genanki.Model(
+my_model = genanki.Model(
     1607392319,
-    'BasicImgAns',
+    'BasicPy',
     fields=[
-        {'name': 'Question'},
-        {'name': 'Answer'},
-        {'name': 'Structure'}
+        {'name': 'Front'},
+        {'name': 'Back'}
     ],
     templates=[
         {
             'name': 'Card 1',
-            'qfmt': '{{Question}}',
-            'afmt': '{{FrontSide}}<hr id="answer">{{Structure}}<br>{{Answer}}',
-        },
-    ])
-img_model = genanki.Model(
-    2112975270,
-    'BasicImg',
-    fields=[
-        {'name': 'Question'},
-        {'name': 'Structure'}
-    ],
-    templates=[
-        {
-            'name': 'Card 1',
-            'qfmt': '{{Question}}',
-            'afmt': '{{FrontSide}}<hr id="answer">{{Structure}}',
-        },
-    ])
-txt_model = genanki.Model(
-    1360356766,
-    'BasicAns',
-    fields=[
-        {'name': 'Question'},
-        {'name': 'Answer'}
-    ],
-    templates=[
-        {
-            'name': 'Card 1',
-            'qfmt': '{{Question}}',
-            'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}',
-        },
-    ])
-no_model = genanki.Model(
-    1471681582,
-    'BasicHead',
-    fields=[
-        {'name': 'Question'}
-    ],
-    templates=[
-        {
-            'name': 'Card 1',
-            'qfmt': '{{Question}}',
-            'afmt': '{{FrontSide}}<hr id="answer">',
+            'qfmt': '{{Front}}',
+            'afmt': '{{FrontSide}}<hr id="answer">{{Back}}',
         },
     ])
 
@@ -88,26 +55,26 @@ for i in range(2, 53):
         my_package.media_files.append(outfile)
         if sheet[f'D{i}'].value:
             my_note = genanki.Note(
-                model=img_txt_model,
-                fields=[sheet[f'B{i}'].value, sheet[f'D{i}'].value, f'<img src="{img_count}.jpg">'])
+                model=my_model,
+                fields=[sheet[f'B{i}'].value, f'<img src="{img_count}.jpg"><br>' + sheet[f'D{i}'].value])
             img_count += 1
             my_deck.add_note(my_note)
         else:
             my_note = genanki.Note(
-                model=img_model,
+                model=my_model,
                 fields=[sheet[f'B{i}'].value, f'<img src="{img_count}.jpg">'])
             img_count += 1
             my_deck.add_note(my_note)
     else:
         if sheet[f'D{i}'].value:
             my_note = genanki.Note(
-                model=txt_model,
+                model=my_model,
                 fields=[sheet[f'B{i}'].value, sheet[f'D{i}'].value])
             my_deck.add_note(my_note)
         else:
             my_note = genanki.Note(
-                model=no_model,
-                fields=[sheet[f'B{i}'].value])
+                model=my_model,
+                fields=[sheet[f'B{i}'].value,''])
             my_deck.add_note(my_note)
 
 # export apkg
