@@ -6,6 +6,7 @@ import genanki
 from PIL import Image
 
 xlsx_file = Path('chem.xlsx')
+
 # parse the xlsx_file
 wb = load_workbook(xlsx_file)
 sheet = wb.active
