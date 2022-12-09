@@ -24,7 +24,7 @@ img_txt_model = genanki.Model(
         {
             'name': 'Card 1',
             'qfmt': '{{Question}}',
-            'afmt': '{{FrontSide}}<hr id="answer">{{MyMedia}}<br>{{Answer}}',
+            'afmt': '{{FrontSide}}<hr id="answer">{{Structure}}<br>{{Answer}}',
         },
     ])
 img_model = genanki.Model(
@@ -38,7 +38,7 @@ img_model = genanki.Model(
         {
             'name': 'Card 1',
             'qfmt': '{{Question}}',
-            'afmt': '{{FrontSide}}<hr id="answer">{{MyMedia}}',
+            'afmt': '{{FrontSide}}<hr id="answer">{{Structure}}',
         },
     ])
 txt_model = genanki.Model(
@@ -79,7 +79,7 @@ if not os.path.exists("images"):
 
 # the actual cards (notes)
 img_count = 0
-for i in range(1, 53):
+for i in range(2, 53):
     if image_loader.image_in(f'C{i}'):
         image = image_loader.get(f'C{i}')
         rgb_im = image.convert('RGB')
